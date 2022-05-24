@@ -6,8 +6,8 @@ import pandas as pd
 
 #1. READ IN WORDS WITH INITIAL CLEANING
 
-#read in words -- could potentially improve source
-df = pd.read_csv('https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt',names=['word'])
+#read in words 
+df = pd.read_csv('data/usa2.txt',names=['word'])
 
 df['word_length'] = df.word.str.len() #get column of word length
 df = df.loc[df.word_length >= 4] #filter out words shorter than 4 letters
