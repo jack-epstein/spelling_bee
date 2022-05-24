@@ -1,9 +1,11 @@
 # Spelling Bee
 In this Repo is an app and script to solve the New York Times daily game of Spelling Bee. This will output both the pangram and a list of all (most) eligible words according to the dictionary I used.
 
-### Usage - Streamlit App
-1. INSTRUCTIONS TBD
 
+### Usage - Streamlit App
+1. Open up the [Streamlit App](https://share.streamlit.io/jack-epstein/spelling_bee/main/spelling_bee_st.py)
+2. Select middle and outer letters from dropdowns
+3. View answers and  brag to your friends about how smart you are!!
 
 ### Usage - Regular Script
 1. Clone this repository (git clone https://github.com/jack-epstein/spelling_bee)
