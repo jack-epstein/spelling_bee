@@ -13,7 +13,7 @@ def letter_check(word):
 
 #1. READ IN WORDS WITH INITIAL CLEANING
 st.title('NYT Spelling Bee App')
-st.date_input('pick date',value=None)
+#st.date_input('pick date',value=None)
 
 #read in words 
 df = pd.read_csv('data/usa2.txt',names=['word'])
