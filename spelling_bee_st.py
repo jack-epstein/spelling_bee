@@ -13,6 +13,7 @@ def letter_check(word):
 
 #1. READ IN WORDS WITH INITIAL CLEANING
 st.title('NYT Spelling Bee App')
+st.write("The rules of Spelling Bee are simple: you are given 7 letters to make words. One of these letters must be included in every word and all words must only consist of this letter plus some of the other 6. Words must be four letters or longer. Each day, there are 1+ pangrams, which include all 7 letters. To play the game, go to this link: https://www.nytimes.com/puzzles/spelling-bee. Obviously, I would consider using this app as a form of cheating (but I won't tell.")
 #st.date_input('pick date',value=None)
 
 #read in words 
