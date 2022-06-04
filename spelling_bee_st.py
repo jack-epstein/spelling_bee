@@ -27,7 +27,8 @@ df['word_length'] = df.word.str.len() #get column of word length
 df = df.loc[df.word_length >= 4] #filter out words shorter than 4 letters
 
 # save list of words not in new york times list
-not_in_list = ['continuo','cony','coon','iconicity','initio','nicotinic','nuncio','toto','yoyo']
+not_in_list = ['continuo','cony','coon','iconicity','initio','nicotinic','nuncio','toto','yoyo','eigne','geeing',
+              'ginnie','wincing','whig']
 df = df.loc[~df.word.isin(not_in_list)] #filter these out
 
 # save list of words missing from our dataset
