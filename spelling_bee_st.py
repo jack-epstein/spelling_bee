@@ -14,6 +14,9 @@ def letter_check(word):
 #1. READ IN WORDS WITH INITIAL CLEANING
 st.title('NYT Spelling Bee App')
 st.write("The rules of Spelling Bee are simple: you are given 7 letters to make words. One of these letters must be included in every word and all words must only consist of this letter plus some of the other 6. Words must be four letters or longer. Each day, there are 1+ pangram(s), which include all 7 letters.") 
+
+st.write("It is worth noting that this is NOT the same source of words the New York Times uses, so the lists this script may output certain words that are not accepted by the game, and could potentially miss some used by the NY Times. I am unable to find the list that they use. If you see a word that the game won't accept or a word missing from this list, please let me know!")
+    
 st.write("To play the game, go to this link: https://www.nytimes.com/puzzles/spelling-bee. Obviously, I would consider using this app as a form of cheating (but I won't tell.)")
 
 
@@ -22,6 +25,14 @@ df = pd.read_csv('data/usa2.txt',names=['word'])
 
 df['word_length'] = df.word.str.len() #get column of word length
 df = df.loc[df.word_length >= 4] #filter out words shorter than 4 letters
+
+# save list of words not in new york times list
+not_in_list = ['continuo','cony','coon','iconicity','initio','nicotinic','nuncio','toto','yoyo']
+df = df.loc[~df.word.isin(not_in_list)] #filter these out
+
+# save list of words missing from our dataset
+missing = ['naan','cocci','cutout','oniony','toon']
+df = df.append(pd.DataFrame(missing,columns=['word'])) #add these words
 
 
 
