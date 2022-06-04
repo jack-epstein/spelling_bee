@@ -13,9 +13,8 @@ def letter_check(word):
 
 #1. READ IN WORDS WITH INITIAL CLEANING
 st.title('NYT Spelling Bee App')
-st.write("The rules of Spelling Bee are simple: you are given 7 letters to make words. One of these letters must be included in every word and all words must only consist of this letter plus some of the other 6. Words must be four letters or longer. Each day, there are 1+ pangrams, which include all 7 letters.") 
+st.write("The rules of Spelling Bee are simple: you are given 7 letters to make words. One of these letters must be included in every word and all words must only consist of this letter plus some of the other 6. Words must be four letters or longer. Each day, there are 1+ pangram(s), which include all 7 letters.") 
 st.write("To play the game, go to this link: https://www.nytimes.com/puzzles/spelling-bee. Obviously, I would consider using this app as a form of cheating (but I won't tell.)")
-st.markdown("Please note that the word source used here comes from [Gwicks](http://www.gwicks.net/dictionaries.htm), which is not the same source the NYT uses. This means there may be some words here that are not included in the NYT list and vice versa.")
 
 
 #read in words 
@@ -46,7 +45,7 @@ for o in others:
 
 
 if len(others) != 6:
-    st.write("Please Choose 6 'Outer' Letters", color='red')
+    st.write('Please Choose 6 Additional Letters', color='red')
     
 else:    
 
