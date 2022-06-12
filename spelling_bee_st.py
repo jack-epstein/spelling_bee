@@ -28,11 +28,12 @@ df = df.loc[df.word_length >= 4] #filter out words shorter than 4 letters
 
 # save list of words not in new york times list
 not_in_list = ['continuo','cony','coon','iconicity','initio','nicotinic','nuncio','toto','yoyo','eigne','geeing',
-              'ginnie','whig']
+              'ginnie','whig','algid','diallage','gael','gail','gaza','geed','gelid','lege']
 df = df.loc[~df.word.isin(not_in_list)] #filter these out
 
 # save list of words missing from our dataset
-missing = ['naan','cocci','cutout','oniony','toon','gigging','wigging']
+missing = ['naan','cocci','cutout','oniony','toon','gigging','agaze','algal','deglaze','deglazed','eagled','geez','gelee',
+          'gigged','glia','zagged','zigged']
 df = df.append(pd.DataFrame(missing,columns=['word'])) #add these words
 
 
