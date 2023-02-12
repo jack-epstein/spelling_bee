@@ -21,7 +21,7 @@ st.write("To play the game, go to this link: https://www.nytimes.com/puzzles/spe
 
 
 #read in words 
-df = pd.read_csv('data/usa2.txt',names=['word'])
+df = pd.read_csv('data/usa2.txt',names=['word'], encoding = "utf-8")
 
 df['word_length'] = df.word.str.len() #get column of word length
 df = df.loc[df.word_length >= 4] #filter out words shorter than 4 letters
