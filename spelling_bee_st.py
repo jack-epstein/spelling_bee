@@ -21,21 +21,21 @@ st.write("To play the game, go to this link: https://www.nytimes.com/puzzles/spe
 
 
 #read in words 
-df = pd.read_csv('data/usa2.txt',names=['word'], engine='python')
+df = pd.read_csv('data/words.csv')
 
 df['word_length'] = df.word.str.len() #get column of word length
 df = df.loc[df.word_length >= 4] #filter out words shorter than 4 letters
 
-# save list of words not in new york times list
+# save list of words not in new york times list -- can be updated
 not_in_list = ['continuo','cony','coon','iconicity','initio','nicotinic','nuncio','toto','yoyo','eigne','geeing',
               'ginnie','whig','algid','diallage','gael','gail','gaza','geed','gelid','lege','allah','althea','athena',
               'ethel','halloo','hanna','hannah','helen','helena','leah','loth','nathan','noah','othello']
-df = df.loc[~df.word.isin(not_in_list)] #filter these out
+df = df.loc[~df.word.isin(not_in_list)].copy() #filter these out
 
-# save list of words missing from our dataset
+# save list of words missing from our dataset -- can be updated
 missing = ['naan','cocci','cutout','oniony','toon','gigging','agaze','algal','deglaze','deglazed','eagled','geez','gelee',
           'gigged','glia','zagged','zigged']
-df = df.append(pd.DataFrame(missing,columns=['word'])) #add these words
+df = df.append(pd.DataFrame(missing,columns=['dictionary'])) #add these words
 
 
 
@@ -56,7 +56,6 @@ others = st.multiselect("Choose All Other Letters",alphabet_list) #user inputs o
 for o in others:
     all_letters.append(o)
     
-
 
 if len(others) != 6:
     st.write('Please Choose 6 Additional Letters', color='red')
