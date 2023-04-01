@@ -35,7 +35,7 @@ df = df.loc[~df.word.isin(not_in_list)].copy() #filter these out
 # save list of words missing from our dataset -- can be updated
 missing = ['naan','cocci','cutout','oniony','toon','gigging','agaze','algal','deglaze','deglazed','eagled','geez','gelee',
           'gigged','glia','zagged','zigged']
-df = df.append(pd.DataFrame(missing,columns=['dictionary'])) #add these words
+df = df.append(pd.DataFrame(missing,columns=['word'])) #add these words
 
 
 
