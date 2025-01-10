@@ -29,7 +29,7 @@ def display_word_column(
             st.write(word)
     
 
-#1. READ IN WORDS WITH INITIAL CLEANING
+# 1. READ IN WORDS WITH INITIAL CLEANING
 df_all = pd.read_csv('data/words.csv')
 df_all['word_length'] = df_all.word.str.len()
 
@@ -40,7 +40,7 @@ df_all = df_all[(df_all.word_length >= 4) & (~df_all.word.isin(EXCLUDE_WORD_LIST
 df_added_words = pd.DataFrame(ADDED_WORD_LIST, columns=['word'])
 df_all = pd.concat((df_all, df_added_words))
 
-#2. STREAMLIT HEADERS
+# 2. STREAMLIT HEADERS
 st.title("NYT Spelling Bee App")
 st.write(
     "The rules of Spelling Bee are simple: you are given 7 letters to make words. One of these "
@@ -62,7 +62,7 @@ st.write(
     "Obviously, I would consider using this app as a form of cheating (but I won't tell.)"
 )
 
-#3. INPUT LETTERS FOR DAY'S SPELLING BEE 
+# 3. INPUT LETTERS FOR DAY'S SPELLING BEE 
 st.header('Letter Selection')
 
 alphabet_list = list(string.ascii_lowercase)
@@ -74,7 +74,8 @@ all_letters = [middle_letter]
 # user inputs other letters
 other_letters = st.multiselect("Choose All Other Letters", alphabet_list)
 all_letters += other_letters
-    
+
+# 4. NARROW 
 if len(other_letters) > 6:
     st.write('WARNING: Too many letters', color='red')
 elif len(other_letters) < 6:
