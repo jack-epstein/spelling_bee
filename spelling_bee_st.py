@@ -35,8 +35,7 @@ df = df.loc[~df.word.isin(not_in_list)].copy() #filter these out
 # save list of words missing from our dataset -- can be updated
 missing = ['naan','cocci','cutout','oniony','toon','gigging','agaze','algal','deglaze','deglazed','eagled','geez','gelee',
           'gigged','glia','zagged','zigged']
-df = df.append(pd.DataFrame(missing,columns=['word'])) #add these words
-
+df = pd.concat((df, pd.DataFrame(missing,columns=['word'])))
 
 
 #2. INPUT LETTERS FOR DAY'S SPELLING BEE 
