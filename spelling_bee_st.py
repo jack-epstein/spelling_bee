@@ -4,19 +4,6 @@ import streamlit as st
 import string
 
 
-ADDED_WORD_LIST = [
-    'naan', 'cocci', 'cutout', 'oniony', 'toon', 'gigging', 'agaze', 'algal', 'deglaze', 'deglazed',
-    'eagled', 'geez', 'gelee', 'gigged', 'glia', 'zagged', 'zigged'
-]
-
-EXCLUDE_WORD_LIST = [
-    'continuo', 'cony', 'coon', 'iconicity', 'initio', 'nicotinic', 'nuncio', 'toto', 'yoyo', 'eigne',
-    'geeing', 'ginnie', 'whig', 'algid', 'diallage', 'gael', 'gail', 'gaza', 'geed', 'gelid', 'lege',
-    'allah', 'althea', 'athena', 'ethel', 'halloo', 'hanna', 'hannah', 'helen', 'helena', 'leah',
-    'loth', 'nathan', 'noah', 'othello'
-]
-
-
 def display_word_column(
     column: st.delta_generator.DeltaGenerator,
     word_list: list,
@@ -34,11 +21,8 @@ df_all = pd.read_csv('data/words.csv')
 df_all['word_length'] = df_all.word.str.len()
 
 # filter out words under 4 letters or in the exclude list
-df_all = df_all[(df_all.word_length >= 4) & (~df_all.word.isin(EXCLUDE_WORD_LIST))].copy()
+df_all = df_all[df_all.word_length >= 4].copy()
 
-# add words from the custom list
-df_added_words = pd.DataFrame(ADDED_WORD_LIST, columns=['word'])
-df_all = pd.concat((df_all, df_added_words))
 
 # 2. STREAMLIT HEADERS
 st.title("NYT Spelling Bee App")
@@ -75,13 +59,12 @@ all_letters = [middle_letter]
 other_letters = st.multiselect("Choose All Other Letters", alphabet_list)
 all_letters += other_letters
 
-# 4. NARROW 
+# 4. NARROW LIST AND DISPLAY
 if len(other_letters) > 6:
     st.write('WARNING: Too many letters', color='red')
 elif len(other_letters) < 6:
     st.write('Please Choose 6 Additional Letters', color='red')
 else:    
-    # 4. NARROW DOWN WORD LIST
     df_middle_letter = df_all[df_all.word.str.contains(middle_letter)].copy()
 
     # check for any words that contain every letter
@@ -96,7 +79,6 @@ else:
 
     df_final = df_middle_letter[df_middle_letter['word_in_list']].copy()
 
-    # 5. RESULTS
     st.header("Today's Pangram(s):")
     pangrams = df_final[df_final['pangram']]['word'].to_list()
     for pangram in pangrams:
