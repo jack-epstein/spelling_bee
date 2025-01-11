@@ -23,7 +23,6 @@ df_all['word_length'] = df_all.word.str.len()
 # filter out words under 4 letters or in the exclude list
 df_all = df_all[df_all.word_length >= 4].copy()
 
-
 # 2. STREAMLIT HEADERS
 st.title("NYT Spelling Bee App")
 st.write(
@@ -61,9 +60,9 @@ all_letters += other_letters
 
 # 4. NARROW LIST AND DISPLAY
 if len(other_letters) > 6:
-    st.write('WARNING: Too many letters', color='red')
+    st.write(':red[WARNING: Too many letters]')
 elif len(other_letters) < 6:
-    st.write('Please Choose 6 Additional Letters', color='red')
+    st.write(f'Please Choose {6-len(other_letters)} Additional Letters')
 else:    
     df_middle_letter = df_all[df_all.word.str.contains(middle_letter)].copy()
 
