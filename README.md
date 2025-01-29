@@ -3,7 +3,7 @@ In this Repo is an app and script to solve the New York Times daily game of Spel
 
 
 ### Usage - Streamlit App
-1. Open up the [Streamlit App](https://share.streamlit.io/jack-epstein/spelling_bee/main/spelling_bee_st.py)
+1. Open up the [Streamlit App](https://nytimes-spelling-bee-app.streamlit.app/)
 2. Select middle and outer letters from dropdowns
 3. View answers and  brag to your friends about how smart you are!!
 
